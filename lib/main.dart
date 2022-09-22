@@ -66,7 +66,7 @@ class AdsPageState extends State<AdsPage> {
     /// please add your own device testingId
     /// (testingId will print in console if you don't provide  )
     FacebookAudienceNetwork.init(
-      testingId: "d1fdf274-ae3a-478c-bf6a-76e5fb0ee880",
+      testingId: "inter your test id",
       iOSAdvertiserTrackingEnabled: true,
     );
 
@@ -98,8 +98,9 @@ class AdsPageState extends State<AdsPage> {
       listener: (result, value) {
         log("Rewarded Ad: $result --> $value");
         if (result == RewardedVideoAdResult.LOADED) _isRewardedAdLoaded = true;
-        if (result == RewardedVideoAdResult.VIDEO_COMPLETE && result == RewardedVideoAdResult.VIDEO_CLOSED &&
-              (value == true || value["invalidated"] == true)) {
+        if (result == RewardedVideoAdResult.VIDEO_COMPLETE &&
+            result == RewardedVideoAdResult.VIDEO_CLOSED &&
+            (value == true || value["invalidated"] == true)) {
           _isRewardedAdLoaded = false;
           _loadRewardedVideoAd();
         }
@@ -160,7 +161,7 @@ class AdsPageState extends State<AdsPage> {
 
   Widget _getRaisedButton({required String title, void Function()? onPressed}) {
     return Padding(
-      padding:const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: ElevatedButton(
         onPressed: onPressed,
         child: Text(
@@ -190,8 +191,7 @@ class AdsPageState extends State<AdsPage> {
   _showBannerAd() {
     setState(() {
       _currentAd = FacebookBannerAd(
-        placementId:
-        "IMG_16_9_APP_INSTALL#$banner", //testid
+        placementId: "IMG_16_9_APP_INSTALL#$banner", //testid
         bannerSize: BannerSize.STANDARD,
         listener: (result, value) {
           log("Banner Ad: $result -->  $value");
